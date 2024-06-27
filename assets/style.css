@@ -1,0 +1,490 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+}
+:root {
+  scroll-behavior: smooth;
+}
+.anim {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.anim.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+body {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+.bckg-home {
+  height: 100vh;
+  width: 100%;
+  background-image: url(img/bckg.jpg);
+  background-size: cover;
+  background-position: center;
+  filter: brightness(40%);
+  position: fixed;
+  z-index: -1;
+}
+h2 {
+  padding: 20px;
+  text-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+.box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  gap: 20px;
+  background-color: white;
+  overflow: hidden;
+}
+blockquote {
+  padding-top: 30px;
+  text-indent: 50px;
+  line-height: 20px;
+}
+.block {
+  display: block;
+}
+.content {
+  display: flex;
+}
+
+/* header */
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+#header .logo img {
+  height: 65px;
+  margin: 2px 70px;
+  object-fit: cover;
+  transition: all 0.5s;
+}
+#header .logo img:hover {
+  transform: translateX(50%) rotate(360deg);
+}
+
+#header nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(8, 8, 94);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  margin: 25px 80px;
+}
+.nav-links .dropdown a,
+li a {
+  font-weight: bold;
+  color: white;
+}
+.nav-links li a::after {
+  content: "";
+  display: block;
+  width: 0;
+  padding-left: -2px;
+  height: 2px;
+  background: white;
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+.menu-togle {
+  display: none;
+  flex-direction: column;
+  height: 25px;
+  justify-content: space-between;
+}
+.menu-togle input {
+  position: absolute;
+  width: 30px;
+  height: 26px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu-togle .line {
+  height: 5px;
+  width: 30px;
+  background-color: white;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+/* dropdown */
+.dropdown-menu {
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  background-color: rgb(8, 8, 94);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 5px 0;
+  min-width: 100px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.dropdown-menu li {
+  padding: 10px;
+}
+.dropdown-menu li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+.dropdown-menu li:hover {
+  background-color: rgb(19, 19, 226);
+}
+.nav-links .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* animation-togle */
+
+.menu-togle div:nth-child(2) {
+  transform-origin: 0 0;
+}
+.menu-togle div:nth-child(4) {
+  transform-origin: 0 100%;
+}
+.menu-togle input:checked ~ div:nth-child(2) {
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.menu-togle input:checked ~ div:nth-child(4) {
+  transform: rotate(-45deg) translate(1px, 0);
+}
+.menu-togle input:checked ~ div:nth-child(3) {
+  transform: scale(0);
+}
+
+/* home/landing page */
+
+#home {
+  padding: 8% 10%;
+  line-height: 70px;
+  max-width: 500px;
+  color: white;
+}
+h1 {
+  font-size: 50px;
+  font-weight: bold;
+}
+#home button {
+  margin: 10% 40%;
+  padding: 10px 40px;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 30px;
+  border: 1px solid;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+button:hover,
+focus {
+  background-color: black;
+  color: white;
+  border: 2px solid;
+}
+#home .content-home {
+  line-height: normal;
+}
+#home p {
+  padding-top: 30px;
+  text-indent: 50px;
+  line-height: 20px;
+}
+#home p,
+#home h1 {
+  display: block;
+  opacity: 0;
+  animation: reveal 0.5s forwards var(--d);
+}
+@keyframes reveal {
+  from {
+    transform: translateX(-150px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* sejarah */
+
+#sejarah .content .lambang img {
+  width: 300px;
+  height: 200px;
+}
+#sejarah .content .lambang {
+  min-width: 400px;
+  height: 350px;
+  text-align: center;
+  order: 2;
+}
+#sejarah .content img {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 20px;
+}
+/* geografis */
+#geografis img {
+  height: 300px;
+  float: left;
+  margin: 0 20px 20px 0;
+}
+.geografis {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+.box img {
+  width: 40%;
+  height: 600px;
+}
+/* wisata */
+
+#wisata .content img {
+  height: 400px;
+  min-width: 350px;
+  object-fit: cover;
+  float: left;
+  margin: 0 20px 20px 0;
+}
+#wisata img {
+  height: 400px;
+  min-width: 350px;
+  object-fit: cover;
+  float: right;
+  margin: 0 0 20px 20px;
+}
+/* gallery */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.gallery .group-a {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  background-color: white;
+}
+.gallery .group-b {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  background-color: white;
+}
+.group-a {
+  width: 33.3%;
+  padding: 15px;
+  gap: 20px;
+}
+.group-b {
+  width: 27%;
+  padding: 15px;
+  gap: 20px;
+}
+.gallery .imgb {
+  width: 100%;
+  height: 250px;
+  transition: all 1.5s;
+}
+.gallery .imgc {
+  width: 100%;
+  height: 250px;
+  transition: all 1.5s;
+  z-index: 2;
+}
+/* hover foto */
+.gallery .group-a .imgc:hover {
+  transform: scale(1.1);
+}
+.gallery .group-b .imgb:hover {
+  transform: scale(1.1);
+}
+/* info */
+.info {
+  display: block;
+  position: absolute;
+  transition: all 0.5s;
+  transform: translateX(10%);
+  opacity: 0;
+  font-weight: bold;
+  z-index: -2;
+}
+.info button {
+  padding: 8px 20px;
+  border-radius: 18px;
+}
+.info button a {
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}
+/* hover info */
+.gallery .group-a:hover .info {
+  display: block;
+  z-index: 1;
+  opacity: 1;
+  transform: translateY(-120%) translateX(10%);
+}
+.gallery .group-b:hover .info {
+  display: block;
+  z-index: 2;
+  opacity: 1;
+  transform: translateY(-120%) translateX(10%);
+}
+/* blurr */
+.gallery:hover > .group-a:not(:hover) {
+  filter: blur(3px) brightness(70%);
+}
+.gallery:hover > .group-b:not(:hover) {
+  filter: blur(3px) brightness(70%);
+}
+/* feedback */
+.feed-back {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+.feed-back form {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+.feed-back input {
+  height: 50px;
+  margin: 20px 0;
+  padding-left: 10px;
+  font-size: 18px;
+  border-radius: 20px;
+}
+.feed-back textarea {
+  overflow: hidden;
+  height: 120px;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: 18px;
+}
+.feed-back button {
+  height: 40px;
+  margin: 20px 0;
+  padding-left: 10px;
+  font-size: 18px;
+  border-radius: 20px;
+}
+.contact {
+  text-align: center;
+  width: 100%;
+  height: 40%;
+  flex: 2;
+}
+.font {
+  text-align: start;
+  max-width: 300px;
+  height: 200px;
+  margin: 20px auto;
+  display: block;
+}
+.font p {
+  text-indent: 50px;
+  margin-bottom: 40px;
+}
+
+.icon a {
+  color: black;
+  margin: 50px auto;
+  letter-spacing: 20px;
+}
+footer {
+  padding: 10px 0;
+  text-align: center;
+  background-color: rgb(8, 8, 94);
+  color: white;
+}
+i {
+  padding: 10px;
+}
+/* media responsive  */
+@media (max-width: 768px) {
+  .menu-togle {
+    display: flex;
+    margin: 20px 50px;
+  }
+  .dropdown-menu {
+    left: 10%;
+  }
+  #header nav .nav-links {
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: rgb(15, 15, 170);
+    position: absolute;
+    z-index: -1;
+    height: 600px;
+    width: 70%;
+    transform: translateY(-100%) translateX(30%);
+    transition: all 0.4s;
+    opacity: 0;
+  }
+  #header nav .nav-links.hidden {
+    transform: translateY(0) translateX(30%);
+    opacity: 1;
+  }
+  /* resvonsive-sejarah */
+  .content {
+    display: block;
+  }
+  /* geografis */
+  #geografis img {
+    height: 300px;
+    width: 100%;
+  }
+  /* wisata */
+  .content {
+    display: block;
+  }
+  /* gallery */
+  .gallery {
+    display: flex;
+  }
+  .group-a {
+    min-width: 45%;
+  }
+  .group-b {
+    min-width: 45%;
+  }
+  .group-b .imgb {
+    width: 100%;
+  }
+  #contact {
+    box-sizing: border-box;
+    display: block;
+  }
+}
+@media (max-width: 480px) {
+  .dropdown-menu {
+    left: 0;
+  }
+  .group-a {
+    min-width: 94%;
+  }
+  .group-b {
+    min-width: 94%;
+  }
+  .group-b .imgb {
+    width: 100%;
+  }
+}
