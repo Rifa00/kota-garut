@@ -21,7 +21,7 @@
 body {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .bckg-home {
   height: 100vh;
@@ -30,7 +30,9 @@ body {
   background-size: cover;
   background-position: center;
   filter: brightness(40%);
-  position: fixed;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   z-index: -1;
 }
 h2 {
@@ -435,12 +437,12 @@ i {
     z-index: -1;
     height: 600px;
     width: 70%;
-    transform: translateY(-100%) translateX(30%);
+    transform: translateY(-100%);
     transition: all 0.4s;
     opacity: 0;
   }
   #header nav .nav-links.hidden {
-    transform: translateY(0) translateX(30%);
+    transform: translateY(0);
     opacity: 1;
   }
   /* resvonsive-sejarah */
