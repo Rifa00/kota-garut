@@ -28,3 +28,39 @@ document.addEventListener("DOMContentLoaded", () => {
     observer.observe(content);
   });
 });
+
+// script form contact
+
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbwaoJ0e7YjGdBYMkSCJ90ZufdHVUemr9okPsQrkAAYKqczcFuMifKExrCiodHCSxwDBXw/exec ";
+const form = document.forms["form_contact"];
+function success() {
+  Swal.fire({
+    icon: "success",
+    title: "Success!",
+    text: "Your operation was completed.",
+  });
+}
+function error() {
+  Swal.fire({
+    icon: "error",
+    title: "Error!",
+    text: "Something went wrong. Please try again later.",
+  });
+}
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  // proses Loading
+  fetch(scriptURL, { method: "POST", body: new FormData(form) })
+    .then((response) => {
+      // loading
+      success();
+      form.reset();
+      console.log("Success!", response);
+    })
+    .catch((error) => {
+      error();
+      console.error("Error!", error.message);
+      form.reset();
+    });
+});
