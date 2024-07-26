@@ -5,6 +5,7 @@
   margin: 0;
   text-decoration: none;
   list-style: none;
+  box-sizing: border-box;
 }
 :root {
   scroll-behavior: smooth;
@@ -19,21 +20,8 @@
   transform: translateY(0);
 }
 body {
-  box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
-}
-.bckg-home {
-  height: 100vh;
-  width: 100%;
-  background-image: url(img/bckg.jpg);
-  background-size: cover;
-  background-position: center;
-  filter: brightness(40%);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  z-index: -1;
 }
 h2 {
   padding: 20px;
@@ -45,6 +33,7 @@ h2 {
   gap: 20px;
   background-color: white;
   overflow: hidden;
+  width:100%;
 }
 blockquote {
   padding-top: 30px;
@@ -85,6 +74,10 @@ blockquote {
   gap: 20px;
   font-size: 20px;
   margin: 25px 80px;
+}
+.nav-links .dropdown{
+ /* margin: auto; */
+ position: relative;
 }
 .nav-links .dropdown a,
 li a {
@@ -173,20 +166,42 @@ li a {
 }
 
 /* home/landing page */
-
+.background {
+  background-image: url(img/bckg.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  box-sizing: border-box;
+  width: 100%;
+  height: 80vh;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(50%);
+}
 #home {
   padding: 8% 10%;
-  line-height: 70px;
-  max-width: 500px;
-  color: white;
+  height: auto;
+  background-color: transparent;
+  position :relative;
+ 
 }
-h1 {
+#home h1 {
+  color: white;
   font-size: 50px;
   font-weight: bold;
+  width: 600px;
+  max-width: 90%;
+  text-shadow: 1px0 20px 20px 10px black;
+}
+#home p {
+  color: white;
+  width: 600px;
+  max-width: 80%;
+  font-weight: bold;
+  text-shadow: 1px0 20px 20px 10px black;
 }
 #home button {
-  margin: 10% 40%;
-  padding: 10px 40px;
+  margin: 5% 20%;
+  padding: 10px 80px;
   font-weight: bold;
   font-size: 20px;
   border-radius: 30px;
@@ -205,7 +220,6 @@ focus {
 }
 #home p {
   padding-top: 30px;
-  text-indent: 50px;
   line-height: 20px;
 }
 #home p,
@@ -225,21 +239,28 @@ focus {
 }
 
 /* sejarah */
+#sejarah{
+  display: flex;
+  flex-direction: column;
+}
 
 #sejarah .content .lambang img {
-  width: 300px;
+  width: 100%;
   height: 200px;
+  
 }
 #sejarah .content .lambang {
-  min-width: 400px;
+  width: 100%;
   height: 350px;
   text-align: center;
   order: 2;
+  flex: 0.3;
 }
 #sejarah .content img {
   width: 100%;
   height: 500px;
   margin-bottom: 20px;
+  flex: 0.7;
 }
 /* geografis */
 #geografis img {
@@ -287,12 +308,12 @@ focus {
   background-color: white;
 }
 .group-a {
-  width: 33.3%;
+  width: 35%;
   padding: 15px;
   gap: 20px;
 }
 .group-b {
-  width: 27%;
+  width: 30%;
   padding: 15px;
   gap: 20px;
 }
@@ -354,11 +375,16 @@ focus {
   filter: blur(3px) brightness(70%);
 }
 /* feedback */
+#contact {
+  padding: 5%;
+}
 .feed-back {
   text-align: center;
   width: 100%;
-  height: 100%;
-  flex: 1;
+  height: auto;
+  padding-left: 5%;
+  padding-right: 5%;
+  box-sizing: border-box;
 }
 .feed-back form {
   display: flex;
@@ -380,33 +406,33 @@ focus {
   font-size: 18px;
 }
 .feed-back button {
-  height: 40px;
   margin: 20px 0;
-  padding-left: 10px;
+  padding: 12px;
   font-size: 18px;
   border-radius: 20px;
 }
 .contact {
   text-align: center;
   width: 100%;
-  height: 40%;
-  flex: 2;
+  display: flex;
+  flex-direction: column;
 }
 .font {
   text-align: start;
-  max-width: 300px;
-  height: 200px;
-  margin: 20px auto;
+  width: 70%;
+  margin: auto;
   display: block;
 }
 .font p {
   text-indent: 50px;
-  margin-bottom: 40px;
+  margin-bottom: 10%;
 }
-
+.icon{
+  margin: 5% auto;
+}
 .icon a {
   color: black;
-  margin: 50px auto;
+  margin:auto;
   letter-spacing: 20px;
 }
 footer {
@@ -417,6 +443,7 @@ footer {
 }
 i {
   padding: 10px;
+  margin-bottom: 5%;
 }
 /* media responsive  */
 @media (max-width: 768px) {
@@ -427,16 +454,22 @@ i {
   .dropdown-menu {
     left: 10%;
   }
+  #hoe{
+    display:none;
+  }
   #header nav .nav-links {
     display: flex;
+    position: absolute;
+    margin: 0;
     text-align: center;
     justify-content: space-evenly;
     flex-direction: column;
     background-color: rgb(15, 15, 170);
     position: absolute;
+    right: 0;
     z-index: -1;
-    height: 600px;
-    width: 70%;
+    height: 80vh;
+    width: 80%;
     transform: translateY(-100%);
     transition: all 0.4s;
     opacity: 0;
@@ -463,10 +496,10 @@ i {
     display: flex;
   }
   .group-a {
-    min-width: 45%;
+    min-width: 50%;
   }
   .group-b {
-    min-width: 45%;
+    min-width: 50%;
   }
   .group-b .imgb {
     width: 100%;
@@ -474,6 +507,7 @@ i {
   #contact {
     box-sizing: border-box;
     display: block;
+    padding: 0;
   }
 }
 @media (max-width: 480px) {
@@ -481,10 +515,10 @@ i {
     left: 0;
   }
   .group-a {
-    min-width: 94%;
+    min-width: 100%;
   }
   .group-b {
-    min-width: 94%;
+    min-width: 100%;
   }
   .group-b .imgb {
     width: 100%;
